@@ -1,0 +1,16 @@
+version: '3.2'
+services:
+  vzlogger:
+    image: torstend/vzlogger:latest
+    read_only: true
+    command: [ "--httpd", "--httpd-port", "8080" ]
+    tty: true
+    volumes:
+      - ./vzlogger.conf:/etc/vzlogger.conf:ro
+    healthcheck:
+      test: "curl -f http://localhost:8080/ ||exit 1"
+      interval: 10s
+      timeout: 10s
+      retries: 2
+    ports:
+      - "8080:8080"

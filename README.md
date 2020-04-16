@@ -42,3 +42,10 @@ The images at [the docker hub](https://hub.docker.com/repository/docker/torstend
 were build with this command
 
     docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7 -t torstend/vzlogger -t torstend/vzlogger:stretch-0.8.0-git-8d06176 . --push
+
+## caveats
+Don't daemonize the vzlogger. Make sure you have
+
+    "daemon": false
+
+in your vzlogger.conf. Daemonizing the process will stop your container immediately.

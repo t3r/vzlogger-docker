@@ -41,6 +41,6 @@ RUN apt-get update && apt-get -y upgrade && \
     apt-get -y autoremove && \
     apt-get clean
 
-USER nobody
+#USER nobody
 ENTRYPOINT [ "/usr/local/bin/vzlogger" ]
 
